@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <style>
+        .user-sections {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .user-sections .pppoe-users, .user-sections .hotspot-users {
+            width: 48%;
+        }
+        .table {
+            width: 100%;
+            color: #212529;
+        }
+        .table th, .table td {
+            text-align: center;
+        }
+        .table tbody tr td a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-button {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Navbar and Sidebar omitted for brevity -->
+
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>User Management</h1>
+            </section>
+
+            <a href="javascript:history.back()" class="back-button">
+                <i class="bi bi-arrow-left"></i> Back
+            </a>
+
+            <div class="user-sections">
+                <div class="pppoe-users">
+                    <h3>PPPoE Users</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>IP</th>
+                                <th>Status</th>
+                                <th>Active Time</th>
+                                <th>Remaining Time</th>
+                                <th>Phone Number</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pppoe-users-table">
+                            <!-- Dynamic content here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="hotspot-users">
+                    <h3>Hotspot Users</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>IP</th>
+                                <th>Status</th>
+                                <th>Active Time</th>
+                                <th>Remaining Time</th>
+                                <th>Phone Number</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hotspot-users-table">
+                            <!-- Dynamic content here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script>
+        function fetchUserData() {
+            // Simulate AJAX fetch (replace with actual API calls)
+            const pppoeUsers = [
+                { ip: "192.168.1.101", status: "Active", activeTime: "2h", remainingTime: "1h", phone: "123-456-7890" },
+                { ip: "192.168.1.102", status: "Inactive", activeTime: "5h", remainingTime: "--", phone: "987-654-3210" }
+            ];
+
+            const hotspotUsers = [
+                { ip: "192.168.1.201", status: "Active", activeTime: "1h", remainingTime: "3h", phone: "456-789-0123" },
+                { ip: "192.168.1.202", status: "Inactive", activeTime: "3h", remainingTime: "--", phone: "654-321-0987" }
+            ];
+
+            populateTable("pppoe-users-table", pppoeUsers);
+            populateTable("hotspot-users-table", hotspotUsers);
+        }
+
+        function populateTable(tableId, users) {
+            const tableBody = document.getElementById(tableId);
+            tableBody.innerHTML = users.map(user => `
+                <tr>
+                    <td><a href="http://${user.ip}" target="_blank">${user.ip}</a></td>
+                    <td>${user.status}</td>
+                    <td>${user.activeTime}</td>
+                    <td>${user.remainingTime}</td>
+                    <td>${user.phone}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" onclick="disconnectUser('${user.ip}')">Disconnect</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function disconnectUser(ip) {
+            alert(`Disconnecting user with IP: ${ip}`);
+            // Implement actual disconnect logic here
+        }
+
+        // Refresh every 3 seconds
+        setInterval(fetchUserData, 3000);
+
+        // Initial fetch
+        fetchUserData();
+    </script>
+</body>
+</html>

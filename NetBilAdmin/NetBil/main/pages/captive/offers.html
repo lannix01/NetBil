@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Packages</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .package-list {
+            list-style: none;
+            padding: 0;
+        }
+        .package {
+            margin: 10px 0;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .package:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .price {
+            font-size: 24px;
+            color: #28a745;
+            margin: 10px 0;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://cdn.pesapal.com/pesapal.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your WiFi Package</h1>
+        <ul class="package-list">
+            <li class="package">
+                <h2>Basic Plan</h2>
+                <p>1 Hour Access</p>
+                <p class="price">$1.99</p>
+                <button onclick="makePayment('1.99', 'Basic Plan')">Buy Now</button>
+            </li>
+            <li class="package">
+                <h2>Standard Plan</h2>
+                <p>1 Day Access</p>
+                <p class="price">$4.99</p>
+                <button onclick="makePayment('4.99', 'Standard Plan')">Buy Now</button>
+            </li>
+            <li class="package">
+                <h2>Premium Plan</h2>
+                <p>1 Week Access</p>
+                <p class="price">$14.99</p>
+                <button onclick="makePayment('14.99', 'Premium Plan')">Buy Now</button>
+            </li>
+            <li class="package">
+                <h2>Monthly Plan</h2>
+                <p>1 Month Access</p>
+                <p class="price">$49.99</p>
+                <button onclick="makePayment('49.99', 'Monthly Plan')">Buy Now</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        function makePayment(amount, description) {
+            var pesapalIframe = new PesapalPay({
+                consumerKey: 'I+YCTC8nJmW4ApdM1mSWWkVL85AaH342',
+                consumerSecret: '+YkoHzRPDDLGSVxTluavLhlzBfY=',
+                amount: amount,
+                description: description,
+                type: 'MERCHANT',
+                currency: 'USD',
+                callbackUrl: '', // Replace with your callback URL
+                onSuccess: function(response) {
+                    console.log('Payment successful:', response);
+                    window.location.href = 'connected.html';
+                },
+                onFailure: function(response) {
+                    console.log('Payment failed:', response);
+                    alert('Payment failed. Please try again.');
+                }
+            });
+
+            pesapalIframe.openIframe();
+        }
+    </script>
+</body>
+</html>

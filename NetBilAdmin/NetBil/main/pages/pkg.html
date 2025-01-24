@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMAZONS</title>
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/libs/adminlte/dist/css/adminlte.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="/libs/adminlte/plugins/toastr/toastr.min.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+    <link rel="manifest" href="/images/icons/manifest.json">
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#ef4036">
+    <meta name="theme-color" content="#ef4036">
+
+    <style>
+        .btn-group-xs>.btn,
+        .btn-xs {
+            padding: .25rem .4rem;
+            font-size: .8rem;
+            line-height: .5;
+            border-radius: .2rem;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/libs/owlcarousel/dist/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="/libs/owlcarousel/dist/assets/owl.theme.default.min.css">
+</head>
+
+<body style="overflow-x: hidden;" class="bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mx-auto my-3">
+                <img src="/images/logo.png?v=1" width="200" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+
+
+                                    <p class="lead text-center">Good Morning, Nicholas &#128075;</p>
+
+                <div class="card py-3">
+                                            <div class="card-header pt-0 bg-white">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <h6 class="m-0">Prepaid - 0727248598 </h6>
+                                </div>
+                                <div class="float-right" id="cardRightSection" style="display: none;">
+                                    <h6></h6>
+                                </div>
+                            </div>
+                        </div>
+                                        <div class="card-body py-0 px-0">
+                        <!-- The Modal -->
+<div class="modal" id="appModal" tabindex="-1" role="dialog" aria-labelledby="appModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="appModalHeader">...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="min-height: 100px;" class="appModalContent p-0 m-0">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal end --><div class="container-fluid">
+    <div class="row" id="dashboardRow">
+        <div class="col-md-6 p-0 w-100">
+            <div class="container-fluid">
+                <div class="row p-0 w-100 m-0 align-items-center">
+                    <div class="col-6 p-0 py-1 m-0" id="creditBalanceBox">
+                                                <p class="text-center h-100 m-0">Credit(Ksh)
+                            <br>
+                            <span class="font-weight-bold" id="creditBalanceText"><span class='text-danger'>0</span></span>
+                        </p>
+                    </div>
+                    <div class="col-6 border-left p-0 py-1 m-0">
+                        <div id="refreshBtn" title="Refresh" class="border" style="position: absolute;font-size: 20px;background: white;width: 30px;height:30px;margin-left: -15px;border-radius: 15px;z-index:100;margin-top: 6px;cursor: pointer;display: flex;justify-content: center;align-items: center;transform: rotate(185deg);">
+                            <svg fill="#585858" height="20px" width="20px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 489.645 489.645" xml:space="preserve">
+                                <g>
+                                    <path d="M460.656,132.911c-58.7-122.1-212.2-166.5-331.8-104.1c-9.4,5.2-13.5,16.6-8.3,27c5.2,9.4,16.6,13.5,27,8.3
+                                        c99.9-52,227.4-14.9,276.7,86.3c65.4,134.3-19,236.7-87.4,274.6c-93.1,51.7-211.2,17.4-267.6-70.7l69.3,14.5
+                                        c10.4,2.1,21.8-4.2,23.9-15.6c2.1-10.4-4.2-21.8-15.6-23.9l-122.8-25c-20.6-2-25,16.6-23.9,22.9l15.6,123.8
+                                        c1,10.4,9.4,17.7,19.8,17.7c12.8,0,20.8-12.5,19.8-23.9l-6-50.5c57.4,70.8,170.3,131.2,307.4,68.2
+                                        C414.856,432.511,548.256,314.811,460.656,132.911z" />
+                                </g>
+                            </svg>
+                        </div>
+                        <p class="text-center h-100 m-0">Net Points<br>0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel p-2 border-top shadow-sm">
+                <div class="p-0">
+                    <img src="/images/slides/slide2.jpeg" class="img-fluid" />
+                </div>
+                <div class="p-0">
+                    <img src="/images/slides/slide2.jpeg" class="img-fluid" />
+                </div>
+                <div class="p-0">
+                    <img src="/images/slides/slide3.jpeg" class="img-fluid" />
+                </div>
+            </div>
+            <div class="p-3 border-top" id="activeSubscriptionsBox"></div>
+        </div>
+        <div class="col-md-6 p-0">
+            <div class="border-left d-none d-md-block" style="position:absolute;height:100%;"></div>
+
+            <div class="p-3" style="height: 72px;">
+                <div class="input-group mb-3 pl-2 border shadow-sm" style="border-radius: 20px;overflow: hidden;">
+                    <input type="text" class="form-control border-0" placeholder="Enter Voucher Code">
+                    <div class="input-group-append">
+                        <button class="btn text-danger">CONNECT</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3" id="packagesBox">
+                <h4>Offers <span class="badge badge-danger badge-pill">New!</span></h4>
+                                    <div class="card shadow-none border my-3" style="cursor: pointer;">
+                        <div class="card-body p-2">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <h6 class="m-0 text-muted">Daily FREE 20 Minutes UnlimiNET<br />
+                                        <p class="m-0 text-muted">FREE (Available from 6AM to 7AM daily)</p>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh5= 30Minutes UnlimiNET</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="26" data-package-name="Sh5= 30Minutes UnlimiNET" data-package-price="5" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_26">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh9= 1Hour UnlimiNET</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="1" data-package-name="Sh9= 1Hour UnlimiNET" data-package-price="9" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_1">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh13= 2Hours UnlimiNET</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="12" data-package-name="Sh13= 2Hours UnlimiNET" data-package-price="13" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_12">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh15= UnlimiNET till 6AM</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="9" data-package-name="Sh15= UnlimiNET till 6AM" data-package-price="15" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_9">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh20= 4Hours UnlimiNET</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="2" data-package-name="Sh20= 4Hours UnlimiNET" data-package-price="20" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_2">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh29= 1GB + 500MB bonus valid 24Hours</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="15" data-package-name="Sh29= 1GB + 500MB bonus valid 24Hours" data-package-price="29" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_15">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh30= 10Hours UnlimiNET</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="11" data-package-name="Sh30= 10Hours UnlimiNET" data-package-price="30" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_11">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh39= 2GB + 1GB bonus valid for 24Hours</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="21" data-package-name="Sh39= 2GB + 1GB bonus valid for 24Hours" data-package-price="39" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_21">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh50= 24Hours UnlimiNET</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="4" data-package-name="Sh50= 24Hours UnlimiNET" data-package-price="50" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_4">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh59= 4GB + 500MB bonus valid for 48Hours</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="27" data-package-name="Sh59= 4GB + 500MB bonus valid for 48Hours" data-package-price="59" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_27">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh69= 5GB + 500MB bonus valid for 72Hours</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="22" data-package-name="Sh69= 5GB + 500MB bonus valid for 72Hours" data-package-price="69" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_22">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh125= 3Days  UnlimiNET</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="45" data-package-name="Sh125= 3Days  UnlimiNET" data-package-price="125" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_45">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh250= 7Days UnlimiNET</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="5" data-package-name="Sh250= 7Days UnlimiNET" data-package-price="250" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_5">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="card shadow-none border my-3 planCard mt-4" style="cursor: pointer;">
+                        <div class="card-body p-3">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                                                            <h6 class="m-0"><b>Sh850= 30Days UnlimiNET</b><br />
+                                            <small>1 Device</small>
+                                        </h6>
+                                                                    </div>
+                                <div class="float-right">
+                                    <button style="border-radius: 20px;" data-package="6" data-package-name="Sh850= 30Days UnlimiNET" data-package-price="850" class="btn btn-outline-danger subscribePlanBtn px-3" id="package_buy_btn_6">BUY</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</div>
+                    </div>
+                    <div class="pt-3 border-top">
+                        <p class="lead text-center">Customer Service</p>
+                        <p class="lead text-center">0702026544</p>
+                    </div>
+                    <div class="text-center">
+                        <!-- Join our WhatsApp group group action -->
+                        <a href="https://chat.whatsapp.com/FWGQPOMhVcY5FnLDSYYGdm" class="btn btn-success btn-sm">Join our WhatsApp Group</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row py-3">
+            <div class="col-md-6 mx-auto">
+                <p class="text-center">
+                    <small>
+                        Powered by <a target="_blank" href="https://netic.co.ke" class="text-muted">&copy; 2024 Netic ISP</a>
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="/libs/adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="/libs/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/libs/adminlte/plugins/toastr/toastr.min.js"></script>
+    <script src="/libs/jquery-loading-overlay-2.1.7/dist/loadingoverlay.min.js"></script>
+    <script>
+        var appOptions = {
+            baseUrl: '',
+        }
+    </script>
+    <script src="/js/app.js"></script>
+    <script src="/js/loadingoverlay.config.js?v=4"></script>
+    <script src="/libs/owlcarousel/dist/owl.carousel.min.js"></script>
+<script>
+                window.ReconnectLink = `http://wifi.amazons/login?@`;
+
+    function loadActiveSubscriptions() {
+        loadContent("https://login.amazons.co.ke/ht/get-active-subs", "#activeSubscriptionsBox", {}, (res) => {}, false);
+    }
+
+    function updateCreditBalance() {
+        httpPost("https://login.amazons.co.ke/ht/balance", {},
+            (res) => {
+                if (res.status == 'success') {
+                    let balance = res.balance;
+                    $("#creditBalanceText").html(balance > 0 ? "<span class='text-success'>" + balance + "</span>" : "<span class='text-danger'>" + balance + "</span>");
+                } else {
+                    // toastr.error('An error occured. Please try again later.');
+                }
+            }, ".nothing");
+    }
+
+    function queryStk(paymentReferenceID, callback) {
+        httpPost("https://login.amazons.co.ke/ht/query-stk", {
+                payment_reference: paymentReferenceID
+            },
+            (res) => {
+                callback(res.message, res.payment_reference);
+            }, ".nothing");
+    }
+
+    var queryTimes = 0;
+
+    function queryStkRecursive(paymentReferenceID, callback) {
+        queryStk(paymentReferenceID, (message, payment_reference) => {
+            queryTimes++;
+
+            // phrases to check in message
+            let phrases = ['success', 'cancelled', 'timeout', 'invalid', 'insufficient'];
+
+            let found = false;
+            let isSuccess = false;
+            phrases.forEach((phrase) => {
+                if (message.includes(phrase)) {
+                    found = true;
+                    isSuccess = phrase == 'success' ? true : false;
+                }
+            });
+
+            if (found) {
+                queryTimes = 0;
+                callback(message, payment_reference);
+            } else {
+                if (queryTimes > 15) {
+                    queryTimes = 0;
+                    callback('timeout', 'abcd');
+                    return;
+                }
+
+                setTimeout(() => {
+                    queryStkRecursive(paymentReferenceID, callback);
+                }, 2000);
+            }
+        });
+    }
+
+    function subscribeToPlan(package, payment_reference) {
+        httpPost("https://login.amazons.co.ke/ht/sub-to-plan", {
+            "package": package,
+            "payment_reference": payment_reference
+        }, (res) => {
+            $("#packagesBox").LoadingOverlay("hide", true);
+
+            if (res.status == 'success') {
+                toastr.success(res.message);
+                loadActiveSubscriptions();
+                updateCreditBalance();
+
+                var voucher_code = res.voucher_code;
+
+                window.location.href = "https://login.amazons.co.ke/connected";
+
+            } else if (res.status == 'failed') {
+                toastr.error(res.message);
+            } else {
+                toastr.error('An error occured. Please try again later.');
+            }
+        }, "#packagesBox");
+    }
+
+    function topUpModal() {
+        $('#appModalHeader').html('Top Up via <img src="/images/M-PESA.jpeg" class="img-fluid" />');
+        $('#appModal').modal('show');
+        $('.appModalContent').html(`
+            <div class="container-fluid">
+                <div class="form-group" id="topUpAmountBox">
+                    <label for="topUpAmount">Select Top Up Amount</label>
+                    <select class="form-control form-control-lg" id="topUpAmount">
+                        <option selected value="10">KES 10.00</option>
+                        <option value="20">KES 20.00</option>
+                    </select>
+                    <input type="hidden" id="preferredPackage" value="" />
+                </div>
+                <div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">MPESA No.</span></div><input type="text" class="form-control" id="topUpMsisdn" value="0727248598">
+                        </div>
+                    </div>
+
+                    <div class="clearfix mt-3">
+                        <div class="float-left"><button onclick="$('#appModal').modal('hide');" class="btn btn-secondary btn-lg">Cancel</button></div>
+                        <div class="float-right"><button data-msisdn="0727248598" id="topUpBtn_submit" class="btn btn-primary btn-lg">Top Up</button></div>
+                    </div>
+                    <hr />
+                    <div class="text-center"><b>OR</b></div>
+                    <div class="alert alert-light mt-2">
+                        <p>Use our <b>PAYBILL instructions</b></p>
+                        <p>1. Go to M-PESA on your phone</p>
+                        <p>2. Select Pay Bill option</p>
+                        <p>3. Enter Business no: <b>4140961</b></p>
+                        <p>4. Enter Account no: <b>0727248598</b></p>
+                        <p>5. Enter the Amount: <b><span class="manualTopUpAmount"></span></b></p>
+                        <p>6. Enter your M-PESA PIN and Send</p>
+                        <p><b>7. Check back and proceed after making payment.</b></p>
+                    </div>
+
+                    <p class="text-muted">
+                        <small>*Note: You can modify the mpesa number above if you prefer to pay using a different number.</small>
+                        <br />
+                        <small>(Contact 0702 026 544 if you need any help making payments)</small>
+                    </p>
+                </div>
+            </div>
+        `);
+    }
+
+    $(() => {
+                    $("#logoutBtnBox").show();
+
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            items: 1,
+            loop: true,
+            margin: 0,
+            autoplay: true,
+            autoplayTimeout: 4500,
+            autoplayHoverPause: true,
+            dots: false,
+        });
+
+        // load active subscriptions
+        loadActiveSubscriptions();
+
+        // refreshBtn
+        $("#refreshBtn").click(() => {
+            // apply rotation animation
+            $("#refreshBtn").css('transition', 'transform 0.5s');
+            $("#refreshBtn").css('transform', 'rotate(535deg)');
+
+            setTimeout(() => {
+                $("#refreshBtn").css('transition', 'transform 0s');
+                $("#refreshBtn").css('transform', 'rotate(185deg)');
+            }, 500);
+
+            loadActiveSubscriptions();
+            updateCreditBalance();
+        });
+
+        $(document).on('click', '.reconnectBtn', (e) => {
+            e.preventDefault();
+
+            let sub_id = $(e.currentTarget).data('subid');
+            let voucher_code = $(e.currentTarget).data('vouchercode');
+
+            window.location.href = window.ReconnectLink + voucher_code;
+        });
+
+        // #topUpBtn_submit
+        $(document).on('click', '#topUpBtn_submit', (e) => {
+            e.preventDefault();
+            let amount = $('#topUpAmount').val();
+            let msisdn = $("#topUpMsisdn").val();
+
+            // remove any spaces
+            msisdn = msisdn.replace(/\s/g, '');
+
+            // if does not start with 0
+            if (!msisdn.startsWith('0')) {
+                toastr.error('MPESA number must start with 0.');
+                return;
+            }
+
+            // length must be 10
+            if (msisdn.length != 10) {
+                toastr.error('MPESA number must be 10 digits.');
+                return;
+            }
+
+            httpPost("https://login.amazons.co.ke/ht/push-stk", {
+                "msisdn": msisdn,
+                "amount": amount,
+                "package": $("#preferredPackage").val()
+            }, (res) => {
+                if (res.status == 'success') {
+                    $('#appModal').modal('hide');
+
+                    toastr.success(res.message);
+
+                    let paymentReferenceID = res.payment_reference;
+                    let preferredPackage = $("#preferredPackage").val();
+                    if (preferredPackage != '') {
+                        $("#dashboardRow").LoadingOverlay("show");
+
+                        queryStkRecursive(paymentReferenceID, (message, payment_reference) => {
+                            if (message == 'success') {
+                                $("#dashboardRow").LoadingOverlay("hide", true);
+                                toastr.success('Payment successful. You can now enjoy your preferred offer.');
+                                setTimeout(() => {
+                                    subscribeToPlan(preferredPackage, paymentReferenceID);
+                                }, 400);
+                            } else if (message == 'timeout') {
+                                $("#dashboardRow").LoadingOverlay("hide", true);
+                                toastr.error('Payment timed out. Please try again.');
+                            } else {
+                                $("#dashboardRow").LoadingOverlay("hide", true);
+                                toastr.error(message);
+                            }
+                        });
+                    } else {
+                        updateCreditBalance();
+                    }
+                } else if (res.status == 'validation_error') {
+                    let errors = res.message;
+                    let error = '';
+                    for (let key in errors) {
+                        error += errors[key] + ' | ';
+                    }
+                    toastr.error(error);
+                } else if (res.status == 'failed') {
+                    toastr.error(res.message);
+                } else {
+                    toastr.error('An error occured. Please try again later.');
+                }
+
+            }, "#topUpBtn_submit");
+        });
+
+        // .subscribePlanBtn
+        $(document).on('click', '.subscribePlanBtn', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            let package = $(e.currentTarget).data('package');
+            let package_name = $(e.currentTarget).data('package-name');
+            let package_price = $(e.currentTarget).data('package-price');
+
+            httpPost("https://login.amazons.co.ke/ht/balance", {},
+                (res) => {
+                    if (res.status == 'success') {
+                        let balance = res.balance;
+                        if (balance >= package_price) {
+                            $('#appModalHeader').html('Confirm Purchase');
+                            $('#appModal').modal('show');
+                            let content = `
+                                <div class="p-2">
+                                    <h6>You are about to purchase ${package_name}. @ KES ${package_price}</h6>
+                                </div>
+                                <div class="p-2">
+                                    <div class="row">
+                                    <div class="col-6">
+                                        <button onclick="$('#appModal').modal('hide');" class="btn btn-secondary btn-md btn-block">CANCEL</button>
+                                    </div>
+                                    <div class="col-6">
+                                    <button data-package="${package}" id="confirmSubscribeBtn" class="btn btn-primary btn-md btn-block">CONTINUE</button>
+                                    </div>
+                                </div>
+                            `;
+                            $(".appModalContent").html(content);
+                        } else {
+                            topUpModal();
+                            let required_amount = package_price - balance;
+                            $('#appModalHeader').html('Pay via <img src="/images/M-PESA.jpeg" class="img-fluid" />');
+
+                            let creditBalText = '';
+                            if (balance > 0) {
+                                creditBalText = `<p>Account Credit: <b>KES ${balance}</b></p>`;
+                            }
+                            $("#topUpAmountBox").html(`
+                                <p>Plan selected: ${package_name}</p>
+                                <input type="hidden" id="topUpAmount" value="${required_amount}" />
+                                <input type="hidden" id="preferredPackage" value="${package}" />
+                                ${creditBalText}
+                                <p class="my-4">You'll pay <b>KES ${required_amount}</b> to complete the subscription</p>
+                            `);
+                            $('#topUpBtn_submit').text('Pay');
+                            $('.manualTopUpAmount').text(`${required_amount}`);
+                        }
+                    } else {
+                        toastr.error(res.message);
+                    }
+                }, "#package_buy_btn_" + package);
+        });
+
+        $(document).on('click', '.planCard', (e) => {
+            e.preventDefault();
+
+            // click closest .subscribePlanBtn child
+            $(e.currentTarget).find('.subscribePlanBtn').click();
+        });
+
+        $(document).on('click', '#confirmSubscribeBtn', (e) => {
+            e.preventDefault();
+
+            let package = $(e.currentTarget).data('package');
+
+            $('#appModal').modal('hide');
+
+            subscribeToPlan(package, "NoRef");
+        });
+    });
+</script>
+</body>
+</html>

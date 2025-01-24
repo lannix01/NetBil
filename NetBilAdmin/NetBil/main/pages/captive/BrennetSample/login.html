@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrenNet - Log In</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta name="msapplication-TileColor" content="#ef4036">
+    <meta name="theme-color" content="#ef4036">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 mx-auto py-4">
+                <div class="text-center my-3 mt-5">
+                    <img width="250" src="img/logo.png" alt="" class="img-fluid">
+                </div>
+                <div class="card shadow mt-5" style="border: 1px solid #0025a9;">
+                    <div class="card-header">
+                        <h6 class="text-center">Hold on...</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center" style="transform: rotate(0 deg);">
+                            <img width="200" src="wifianim.gif" alt="" loading="lazy" class="img-fluid">
+                        </div>
+                        <!--  -->
+                        <h6 id="pageMessage" style="color: #0025a9; font-weight: bold;" class="mt-3"></h6>
+                        <!-- <form name="redirect" action="http://192.168.100.6:9110" method="post"> -->
+                        <form name="redirect" action="\dist\pages\captive\offers.html" method="post">
+                            <input type="hidden" name="mac" value="$(mac)">
+                            <input type="hidden" name="ip" value="$(ip)">
+                            <input type="hidden" name="signin" value="on">
+                        </form>
+
+                        <form name="login" action="/login" method="post">
+                            <input type="hidden" id="lUsername" name="username" />
+                            <input type="hidden" id="lPassword" name="password" />
+                            <input type="hidden" name="dst" value="https://login.brennet.co.ke/connected" />
+                            <input type="hidden" name="popup" value="false" />
+                        </form>
+                        <!--  -->
+                    </div>
+                    <div class="card-footer" style="background-color: #0025a9;">
+                        <p class="text-center text-light"><small>&copy; 2022 - 2025. All rights reserved.</small></p>
+                        <p class="text-center text-light mt-4"><small>Powered by: NetBil<a class="text-light"
+                                    href="mailto:nichmu43@gmail.com"></a></small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function proceed() {
+            var currentUrl = window.location.href;
+            if ("$(error)" == "" && currentUrl.includes('@')) {
+                document.getElementById("pageMessage").innerHTML = "Hang on as we sign you in...";
+                var code = currentUrl.split('@')[1];
+                document.getElementById("lUsername").value = code;
+                document.getElementById("lPassword").value = code;
+                document.login.submit();
+            } else {
+                if ("$(error)".indexOf("no more sessions are allowed for user") == 0) {
+                    alert("MAXIMUM devices connected to package. Please disconnect one of your devices and try again.\n\nIf you disconnected any recently wait for at least 5 minutes then try again. Otherwise, contact our support team for assistance.");
+                }
+
+                else if ("$(error)".indexOf("has reached traffic limit") !== -1) {
+                    alert("You have depleted your data bundle. Click OK to purchase a new data bundle.");
+                }
+
+                else if ("$(error)".indexOf("has reached uptime limit") !== -1) {
+                    alert("Your package  expired. Click OK to continue to purchase a new data bundle.");
+                }
+
+                document.getElementById("pageMessage").innerHTML = "Redirecting you to the WiFi Portal...";
+                document.redirect.submit();
+            }
+        }
+
+        window.onload = function () {
+            setTimeout(() => proceed(), 1000);
+        }
+    </script>
+</body>
+</html>

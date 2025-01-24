@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Management</title>
+    <meta name="description" content="Device Management Dashboard">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
+        .btn-circle {
+            border-radius: 50%;
+        }
+
+        .modal-content {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1><i class="bi bi-device-laptop"></i> Device Management</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Device Management</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <a href="javascript:history.back()" class="back-button mb-3">
+              <i class="bi bi-arrow-left"></i> Back
+          </a>
+
+            <section class="content">
+                <div class="container">
+                    <h2><i class="bi bi-device-laptop"></i> Device Management</h2>
+
+                    <!-- Device Management Tabs -->
+                    <ul class="nav nav-tabs" id="deviceTabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="devices-tab" data-bs-toggle="tab" href="#devices" role="tab">
+                                Devices
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="connected-users-tab" data-bs-toggle="tab" href="#connected-users" role="tab">
+                                Connected Users
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content" id="deviceTabContent">
+                        <!-- Devices Tab -->
+                        <div class="tab-pane fade show active" id="devices" role="tabpanel">
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addDeviceModal">
+                                        <i class="bi bi-plus-circle"></i> Add New Device
+                                    </button>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Device Name</th>
+                                                    <th>Type</th>
+                                                    <th>IP Address</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="deviceTableBody">
+                                                <!-- Devices will be populated here dynamically -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Connected Users Tab -->
+                        <div class="tab-pane fade" id="connected-users" role="tabpanel">
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Device</th>
+                                                    <th>User/Client</th>
+                                                    <th>IP Address</th>
+                                                    <th>Connected Since</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="connectedUsersTableBody">
+                                                <!-- Connected users will be populated here dynamically -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Device Modal -->
+            <div class="modal fade" id="addDeviceModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add New Device</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addDeviceForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Device Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Device Type</label>
+                                    <select class="form-select" required>
+                                        <option value="router">Router</option>
+                                        <option value="access-point">Access Point</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">IP Address</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" form="addDeviceForm" class="btn btn-primary">Add Device</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-inline">
+            Your Network Management Solution
+        </div>
+        <strong>Copyright &copy; 2024 <a href="#">BrenNet</a>.</strong> All rights reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+    <script src="./devices.js"></script>
+</body>
+</html>

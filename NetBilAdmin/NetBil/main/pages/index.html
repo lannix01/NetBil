@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrenNet Dashboard</title>
+    <meta name="description" content="BrenNet Network Management Dashboard">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                        <i class="bi bi-list"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        <img src="./profile.jpg" alt="User" class="rounded-circle" style="width: 30px; height: 30px;">
+                        <span class="d-none d-md-inline">Admin User</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="./login-v2.html" class="dropdown-item">Sign out</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="./index.html" class="brand-link">
+                <img src="./logo.png" alt="BrenNet Logo" class="brand-image img-circle elevation-3">
+                <span class="brand-text font-weight-light">BrenNet</span>
+            </a>
+            <div class="sidebar">
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+                        <li class="nav-item">
+                            <a href="./index.html" class="nav-link active">
+                                <i class="bi bi-house-door"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./users.html" class="nav-link">
+                                <i class="bi bi-people"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./devices.html" class="nav-link">
+                                <i class="bi bi-laptop"></i>
+                                <p>Devices</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./revenue.html" class="nav-link">
+                                <i class="bi bi-bar-chart-line"></i>
+                                <p>Revenue</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="./ip.js" class="nav-link">
+                            <i class="bi bi-sim"></i>
+                            <p>IP / DHCP POOLS</p>
+                          </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Dashboard</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats and Charts -->
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Stats Cards -->
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-primary">
+                                <div class="inner">
+                                    <h3 id="onlineUsers">0</h3>
+                                    <p>Online Users</p>
+                                </div>
+                                <i class="bi bi-people-fill small-box-icon"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3 id="subscriptionRate">0<sup>%</sup></h3>
+                                    <p>Subscription Rate</p>
+                                </div>
+                                <i class="bi bi-graph-up small-box-icon"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3 id="totalUsers">0</h3>
+                                    <p>Total Users</p>
+                                </div>
+                                <i class="bi bi-person-plus-fill small-box-icon"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3 id="uniqueVisitors">0</h3>
+                                    <p>Unique Visitors</p>
+                                </div>
+                                <i class="bi bi-eye-fill small-box-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Network Status and System Status -->
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Network Status</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div id="networkChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                          <div class="card">
+                              <div class="card-header">
+                                  <h3 class="card-title">System Dashboard</h3>
+                              </div>
+                              <div class="card-body">
+                                  <!-- Bootstrap Tabs -->
+                                  <ul class="nav nav-tabs" id="statusTabs" role="tablist">
+                                      <li class="nav-item" role="presentation">
+                                          <button class="nav-link active" id="system-status-tab" data-bs-toggle="tab" data-bs-target="#system-status" type="button" role="tab" aria-controls="system-status" aria-selected="true">System Status</button>
+                                      </li>
+                                      <li class="nav-item" role="presentation">
+                                          <button class="nav-link" id="current-ip-tab" data-bs-toggle="tab" data-bs-target="#current-ip" type="button" role="tab" aria-controls="current-ip" aria-selected="false">Current IP</button>
+                                      </li>
+                                      <li class="nav-item" role="presentation">
+                                          <button class="nav-link" id="transmission-status-tab" data-bs-toggle="tab" data-bs-target="#transmission-status" type="button" role="tab" aria-controls="transmission-status" aria-selected="false">Transmission Status</button>
+                                      </li>
+                                  </ul>
+
+                                  <!-- Tab Content -->
+                                  <div class="tab-content mt-3" id="statusTabsContent">
+                                      <!-- System Status Tab -->
+                                      <div class="tab-pane fade show active" id="system-status" role="tabpanel" aria-labelledby="system-status-tab">
+                                          <p><b>RAM Usage:</b> <span id="ramStatus">Fetching...</span></p>
+                                          <p><b>CPU Usage:</b> <span id="cpuStatus">Fetching...</span></p>
+                                          <p><b>Network Activity:</b> <span id="networkStatus">Fetching...</span></p>
+                                      </div>
+
+                                      <!-- Current IP Tab -->
+                                      <div class="tab-pane fade" id="current-ip" role="tabpanel" aria-labelledby="current-ip-tab">
+                                          <p><b>Your Current IP Address:</b> <span id="ipAddress">Fetching...</span></p>
+                                      </div>
+
+                                      <!-- Transmission Status Tab -->
+                                      <div class="tab-pane fade" id="transmission-status" role="tabpanel" aria-labelledby="transmission-status-tab">
+                                          <iframe src="https://fast.com/#" title="Transmission Speed Test" style="width: 100%; height: 400px; border: none;"></iframe>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- JavaScript to Fetch System Data -->
+                      <script>
+                          document.addEventListener('DOMContentLoaded', () => {
+                              // Mock System Data
+                              setTimeout(() => {
+                                  document.getElementById('ramStatus').innerText = '4 GB / 8 GB';
+                                  document.getElementById('cpuStatus').innerText = '25% Usage';
+                                  document.getElementById('networkStatus').innerText = 'Active - 200 Mbps';
+                              }, 1000);
+
+                              // Fetch Current IP Address
+                              fetch('https://api64.ipify.org?format=json')
+                                  .then(response => response.json())
+                                  .then(data => {
+                                      document.getElementById('ipAddress').innerText = data.ip;
+                                  })
+                                  .catch(err => {
+                                      document.getElementById('ipAddress').innerText = 'Error fetching IP';
+                                      console.error(err);
+                                  });
+                          });
+                      </script>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-inline">
+                Your Network Management Solution
+            </div>
+            <strong>Copyright &copy; 2024 <a href="#">BrenNet</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Fetch and update Total Users
+        fetch('fetchUsersCount.php') // Adjust the path if necessary
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('totalUsers').textContent = data.totalUsers || 0;
+            })
+            .catch(error => {
+                console.error("Error fetching total users:", error);
+                document.getElementById('totalUsers').textContent = "Error fetching data";
+            });
+
+        // Fetch and update other stats (Online Users, Subscription Rate, Unique Visitors)
+        fetch('/api/stats') // Adjust this API endpoint if needed
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('onlineUsers').textContent = data.onlineUsers || 0;
+                document.getElementById('subscriptionRate').innerHTML = `${data.subscriptionRate || 0}<sup>%</sup>`;
+                document.getElementById('uniqueVisitors').textContent = data.uniqueVisitors || 0;
+            });
+
+        // Initialize Network Chart
+        const options = {
+            chart: {
+                type: 'area',
+                height: 350
+            },
+            series: [{
+                name: 'Network Traffic',
+                data: [10, 41, 35, 51, 49, 62, 69, 91, 125, 110]
+            }],
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
+            }
+        };
+        const networkChart = new ApexCharts(document.querySelector("#networkChart"), options);
+        networkChart.render();
+    });
+
+    </script>
+</body>
+</html>

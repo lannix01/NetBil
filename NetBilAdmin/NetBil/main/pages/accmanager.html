@@ -1,0 +1,281 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Manager</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            font-size: 14px;
+        }
+        #main {
+            flex: 3;
+            padding: 20px;
+        }
+        #sidebar {
+            flex: 1;
+            border-left: 1px solid #ccc;
+            padding: 20px;
+            background-color: #e6e6e6;
+        }
+        h1, h2 {
+            margin: 0 0 10px;
+            color: #2e1e1e;
+            font-size: 16px;
+        }
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 6px;
+            font-size: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            align-self: flex-end;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        button:hover {
+            background-color: #253546;
+        }
+        #logs {
+            height: 500px;
+            overflow-y: scroll;
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+        #logs p {
+            margin: 15px 0;
+        }
+        #account-display {
+            background-color: #85bdf1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+        .popup {
+            display:none ;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #dfc0e2;
+            color: rgb(21, 6, 85);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            font-size: 12px;
+        }
+        .popup.show {
+            display: block;
+            animation: fadeInOut 5s ease-in-out;
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateY(20px); }
+            10%, 90% { opacity: 1; transform: translateY(0); }
+        }
+        .log-console {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 12px;
+            margin-top: 20px;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        #clear-queues {
+          float: right;
+          margin-left: 10px;
+      }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h1>ACCOUNT OPERATIONS</h1>
+        <button id="clear-queues">Clear Queues</button> <!-- Button to clear all fields -->
+    <br/>
+        <h2>Create Account</h2>
+        <form method="POST" id="create-account-form">
+            <input type="hidden" name="action" value="create">
+            <input type="text" name="account_number" placeholder="Account Number" required=""/>
+            <input type="text" name="account_holder" placeholder="Account Holder" required=""/>
+            <input type="number" step="0.01" name="initial_balance" placeholder="Initial Balance" required=""/>
+            <button type="submit">Create Account</button>
+        </form>
+
+        <h2>Deposit</h2>
+        <form method="POST" id="deposit-form">
+            <input type="hidden" name="action" value="deposit">
+            <input type="text" name="account_number" placeholder="Account Number" required=""/>
+            <input type="number" step="0.01" name="amount" placeholder="Amount" required=""/>
+            <button type="submit">Deposit</button>
+        </form>
+
+        <h2>Withdraw</h2>
+        <form method="POST" id="withdraw-form">
+            <input type="hidden" name="action" value="withdraw">
+            <input type="text" name="account_number" placeholder="Account Number" required=""/>
+            <input type="number" step="0.01" name="amount" placeholder="Amount" required=""/>
+            <button type="submit">Withdraw</button>
+        </form>
+
+        <h2>Transfer Between Accounts</h2>
+        <form method="POST" id="transfer-form">
+            <input type="hidden" name="action" value="transfer">
+            <input type="text" name="from_account" placeholder="From Account Number" required="*"/>
+            <input type="text" name="to_account" placeholder="To Account Number" required="*"/>
+            <input type="number" step="0.01" name="amount" placeholder="Amount" required="*"/>
+            <button type="submit">Transfer</button>
+        </form>
+
+        <h2>Check Balance</h2>
+        <form method="POST" id="check-balance-form">
+            <input type="hidden" name="action" value="check_balance">
+            <input type="text" name="account_number" placeholder="Account Number" required=""/>
+            <button type="submit">Check Balance</button>
+        </form>
+
+
+    </div>
+
+    <div id="sidebar">
+        <h2>ACCOUNT STATUS</h2>
+        <div id="account-display">
+            <p>Account Number: N/A</p>
+            <p>Account Holder: N/A</p>
+            <p>Balance: N/A</p>
+        </div>
+
+        <h2>CONSOLE</h2>
+        <div id="logs"></div>
+
+        <button id="show-logs">LOGS</button> <!-- Logs button moved under Console -->
+    </div>
+
+    <div id="popup" class="popup">Action completed successfully!</div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const forms = document.querySelectorAll('form');
+          const logsContainer = document.getElementById('logs');
+          const showLogsButton = document.getElementById('show-logs');
+          const accountDisplay = document.getElementById('account-display');
+          const popup = document.getElementById('popup');
+          const notificationSound = new Audio('https://www.soundjay.com/buttons/sounds/button-10.mp3');
+
+          // Clear Queues button handler
+          document.getElementById('clear-queues').addEventListener('click', () => {
+              forms.forEach(form => form.reset()); // Reset all forms
+              logsContainer.innerHTML = ''; // Clear the logs
+          });
+
+          // Show logs button handler with autoscroll
+          showLogsButton.addEventListener('click', async () => {
+              logsContainer.innerHTML = '<p>Loading logs...</p>'; // Indicate loading
+
+              try {
+                  const response = await fetch('get_logs.php');
+                  const data = await response.json();
+
+                  if (data.logs) {
+                      logsContainer.innerHTML = data.logs.map(log => `<p>${log}</p>`).join('');
+                      scrollLogsToBottom();
+                  } else {
+                      logsContainer.innerHTML = '<p>No logs available.</p>';
+                  }
+              } catch (error) {
+                  logsContainer.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+              }
+          });
+
+          forms.forEach(form => {
+              form.addEventListener('focusin', () => {
+                  forms.forEach(otherForm => {
+                      if (otherForm !== form) resetForm(otherForm);
+                  });
+              });
+
+              form.addEventListener('submit', async event => {
+                  event.preventDefault();
+                  const formData = new FormData(form);
+                  const action = formData.get('action');
+                  const payload = Object.fromEntries(formData.entries());
+
+                  try {
+                      showPopup(`Processing ${action}...`);
+                      logsContainer.innerHTML = '';
+
+                      const response = await fetch('bank_api.php', {
+                          method: 'POST',
+                          body: new URLSearchParams(payload),
+                      });
+                      const data = await response.json();
+
+                      if (data.logs) {
+                          updateLogs(data.logs);
+                      }
+
+                      if (data.account) {
+                          updateAccountDisplay(data.account);
+                      }
+
+                      showPopup(`${action.charAt(0).toUpperCase() + action.slice(1)} successful!`);
+                  } catch (error) {
+                      showPopup(`Error: ${error.message}`);
+                      logsContainer.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+                  }
+              });
+          });
+
+          function resetForm(form) {
+              form.reset();
+          }
+
+          function showPopup(message) {
+              popup.textContent = message;
+              popup.classList.add('show');
+              notificationSound.play();
+              setTimeout(() => popup.classList.remove('show'), 5000);
+          }
+
+          function updateLogs(logs) {
+              logsContainer.innerHTML = logs.map(log => `<p>${log}</p>`).join('');
+              scrollLogsToBottom();
+          }
+
+          function updateAccountDisplay(account) {
+              accountDisplay.innerHTML = `
+                  <p>Account Number: ${account.number || 'N/A'}</p>
+                  <p>Account Holder: ${account.holder || 'N/A'}</p>
+                  <p>Balance: ${account.balance || 'N/A'}</p>
+              `;
+          }
+
+          // Helper function for autoscrolling logs
+          function scrollLogsToBottom() {
+              logsContainer.scrollTop = logsContainer.scrollHeight;
+          }
+      });
+  </script>
+
+
+</body>
+</html>

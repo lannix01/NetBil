@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Data Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .error {
+      color: red;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>IP Data Table</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Start IP</th>
+        <th>End IP</th>
+        <th>Join Key</th>
+        <th>City</th>
+        <th>Region</th>
+        <th>Country</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Postal Code</th>
+        <th>Timezone</th>
+      </tr>
+    </thead>
+    <tbody id="ip-data">
+      <!-- Data will be inserted here -->
+    </tbody>
+  </table>
+  <div id="error-message" class="error"></div>
+
+  <script>
+    // Fetch data from ip.json and populate the table
+    fetch('ip.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        const tableBody = document.getElementById('ip-data');
+
+        // Check if the data is an array or a single object
+        const rows = Array.isArray(data) ? data : [data];
+
+        // Populate table rows
+        rows.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${item.start_ip || 'N/A'}</td>
+            <td>${item.end_ip || 'N/A'}</td>
+            <td>${item.join_key || 'N/A'}</td>
+            <td>${item.city || 'N/A'}</td>
+            <td>${item.region || 'N/A'}</td>
+            <td>${item.country || 'N/A'}</td>
+            <td>${item.latitude || 'N/A'}</td>
+            <td>${item.longitude || 'N/A'}</td>
+            <td>${item.postal_code || 'N/A'}</td>
+            <td>${item.timezone || 'N/A'}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        document.getElementById('error-message').textContent = 'Failed to load data. Please try again later.';
+      });
+  </script>
+</body>
+</html>

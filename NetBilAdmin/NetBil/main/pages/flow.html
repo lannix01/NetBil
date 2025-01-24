@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.0.2/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <h1>Real-Time Monitoring and Billing Flowchart</h1>
+    <div class="mermaid">
+        graph TD
+            A(Start) --> B(Fetch Real-Time Network Data<br>(SNMP or Tool))
+            B --> C(Analyze Data:<br>Bandwidth, Latency, Downtime)
+            C --> D(Calculate Billing:<br>Pay-Per-Use or Tiered Pricing)
+            D --> E(Generate Invoice and<br>Notify Customer)
+            E --> F(Update Dashboard:<br>Network Performance, Usage, Billing Info)
+            F --> G{Payment Confirmation?}
+            G -- Yes --> H(Process Payment and<br>Update Billing Records)
+            H --> I(End)
+            G -- No --> I
+    </div>
+</body>
+</html>

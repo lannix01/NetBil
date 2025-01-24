@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Admin Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .login-box {
+            margin: 50px auto;
+            max-width: 400px;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            text-align: center;
+            background: #2575fc;
+            color: white;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .btn-primary {
+            background-color: #6a11cb;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #2575fc;
+        }
+
+        .form-floating>label {
+            color: #6a11cb;
+        }
+
+        .form-control:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 0 0.2rem rgba(106, 17, 203, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <div class="card card-outline">
+            <div class="card-header">
+                <a href="login-v2.html" class="link-light text-center">
+                    <h1 class="mb-0">
+                        <img src="./logo.png" alt="Logo" style="height: 60px;">
+                    </h1>
+                </a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+                <form action="index.html" method="post">
+                    <div class="input-group mb-3">
+                        <div class="form-floating flex-grow-1">
+                            <input id="loginUsername" type="text" class="form-control" placeholder="Phone Number">
+                            <label for="loginUsername">Phone Number</label>
+                        </div>
+                        <div class="input-group-text">
+                            <span class="bi bi-person"></span>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="form-floating flex-grow-1">
+                            <input id="loginPassword" type="password" class="form-control" placeholder="Password">
+                            <label for="loginPassword">Password</label>
+                        </div>
+                        <div class="input-group-text">
+                            <span class="bi bi-lock-fill"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember Me</label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
